@@ -1,15 +1,14 @@
-const gulp = require('gulp');
-const pug = require('gulp-pug');
-const config = require('../gulpconfig');
+const gulp      = require('gulp');
+const pug       = require('gulp-pug');
+const config    = require('../gulpconfig');
 
-const compilePug = () => {
-    return gulp.src(`${config.path.dev.views}/*.pug`)
-        .pipe(pug({
-            pretty: true,
-        }))
-        .pipe(gulp.dest(config.path.dist.views));
+const option = {
+    pretty: true
 }
 
 gulp.task('pug', () =>
-    compilePug()
+    gulp.src(`${config.path.dev.views}/*.pug`)
+        .pipe(pug(option))
+        .pipe(gulp.dest(config.path.dist.views))
 );
+

@@ -1,5 +1,5 @@
-const devPath = 'src';
-const distPath = 'public';
+const devPath   = 'src';
+const distPath  = 'public';
 
 const config = {
     path: {
