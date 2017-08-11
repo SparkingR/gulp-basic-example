@@ -7,4 +7,4 @@ const sequence      = require('gulp-sequence');
 global.browserSync = browserSync;
 requireDir('./gulp/tasks', { recurse: false });
 
-gulp.task('default', sequence('clean','sass','pug'));
+gulp.task('default', sequence('clean','sass','pug','babel'));

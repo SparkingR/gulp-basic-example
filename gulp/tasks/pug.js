@@ -2,6 +2,7 @@ const gulp      = require('gulp');
 const pug       = require('gulp-pug');
 const config    = require('../gulpconfig');
 
+
 const option = {
     pretty: true
 }
