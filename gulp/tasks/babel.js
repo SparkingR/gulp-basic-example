@@ -1,8 +1,10 @@
-const gulp      = require('gulp');
-const babel     = require('gulp-babel');
-const concat     = require('gulp-concat');
+const gulp          = require('gulp');
+const plumber       = require('gulp-plumber');
 const sourcemaps    = require('gulp-sourcemaps');
-const config    = require('../gulpconfig');
+const babel         = require('gulp-babel');
+const concat        = require('gulp-concat');
+const config        = require('../gulpconfig');
+
 
 const plugins = {
     presets: ['es2015']
@@ -10,6 +12,7 @@ const plugins = {
 
 gulp.task('babel', () =>
     gulp.src(`${config.path.dev.js}/*.js`)
+        .pipe(plumber())
         .pipe(sourcemaps.init())
         .pipe(babel(plugins))
         .pipe(concat('all.js'))
