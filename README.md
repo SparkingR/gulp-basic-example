@@ -19,10 +19,10 @@ gulp build
 
 ## Packages Used
 | Feature | Packages Used |
-| ======= | ============= |
+| :-----: | :-----------: |
 | HTML | gulp-pug |
-| CSS | gulp-sass, gulp-postcss(autoprefixer, cssnano) |
-| JavaScript | gulp-babel(babel-preset-es2015), gulp-concat, gulp-order, gulp-uglify |
+| CSS | gulp-sass,<br>gulp-postcss(autoprefixer, cssnano) |
+| JavaScript | gulp-babel(babel-preset-es2015),<br>gulp-concat, gulp-order, gulp-uglify |
 | Server | browser-sync |
-| Other Utils | gulp-clean, gulp-if, gulp-plumber, gulp-sequence, gulp-sourcemaps, minimist, require-dir |
+| Other Utils | gulp-clean, gulp-if, gulp-plumber, gulp-sequence,<br>gulp-sourcemaps, minimist, require-dir |
 
