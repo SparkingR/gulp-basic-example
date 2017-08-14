@@ -18,4 +18,4 @@ global.isProdMode = (option.env === "prod" || option.env === "production");
 gulp.task('default', sequence('clean', 'sass', 'pug', 'babel', 'browser-sync', 'watch'));
 
 gulp.task('set-prodmode', () => global.isProdMode = true);
-gulp.task('bulid', sequence('set-prodmode','clean', 'sass', 'pug', 'babel'));
+gulp.task('build', sequence('set-prodmode','clean', 'sass', 'pug', 'babel'));
