@@ -20,7 +20,7 @@ const devPlugins = [
 ];
 
 gulp.task('sass', () =>
-    gulp.src(`${config.path.dev.styles}/*.{scss,sass}`)
+    gulp.src(`${config.path.dev.styles}/index.{scss,sass}`)
         .pipe(plumber())
         .pipe(gulpIf(!global.isProdMode, sourcemaps.init()))
         .pipe(sass().on('error', sass.logError))
