@@ -19,6 +19,12 @@ const fileOrder = [
     `${config.path.dev.js}/a.js`
 ];
 
+const uglifyOption = {
+    mangle: {
+        toplevel: true
+    }
+}
+
 gulp.task('babel', () =>
     gulp.src(`${config.path.dev.js}/*.js`)
         .pipe(plumber())
@@ -26,7 +32,7 @@ gulp.task('babel', () =>
         .pipe(babel(plugins))
         .pipe(order(fileOrder, { base: './' }))
         .pipe(concat('all.js'))
-        .pipe(gulpIf(global.isProdMode, uglify()))
+        .pipe(gulpIf(global.isProdMode, uglify(uglifyOption)))
         .pipe(gulpIf(!global.isProdMode, sourcemaps.write()))
         .pipe(gulp.dest(config.path.dist.js))
 );

@@ -5,7 +5,7 @@ const config    = require('../gulpconfig');
 const browserSync = require('./browserSync');
 
 
-// const option = {
+// const pugOption = {
 //     pretty: true
 // };
 
