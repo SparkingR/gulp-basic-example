@@ -1,13 +1,10 @@
 const gulp          = require('gulp');
 const requireDir    = require('require-dir');
-const browserSync   = require('browser-sync').create();
 const minimist      = require('minimist');
 const sequence      = require('gulp-sequence');
 
 
-global.browserSync = browserSync;
 requireDir('./gulp/tasks', { recurse: false });
-
 
 const envOption = {
     default: {
@@ -15,8 +12,10 @@ const envOption = {
     }
 }
 const option = minimist(process.argv.slice(2), envOption);
-global.isProdMode = (option.env === "prod" || option.env === "production");
 console.log(`Mode : ${option.env} `);
+global.isProdMode = (option.env === "prod" || option.env === "production");
 
+gulp.task('default', sequence('clean', 'sass', 'pug', 'babel', 'browser-sync', 'watch'));
 
-gulp.task('default', sequence('clean', 'sass', 'pug', 'babel'));
+gulp.task('set-prodmode', () => global.isProdMode = true);
+gulp.task('bulid', sequence('set-prodmode','clean', 'sass', 'pug', 'babel'));

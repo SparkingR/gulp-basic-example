@@ -5,8 +5,9 @@ const sass          = require('gulp-sass');
 const postcss       = require('gulp-postcss');
 const autoprefixer  = require('autoprefixer');
 const cssnano       = require('cssnano');
-const gulpif        = require('gulp-if');
+const gulpIf        = require('gulp-if');
 const config        = require('../gulpconfig');
+const browserSync = require('./browserSync');
 
 
 const prodPlugins = [
@@ -21,10 +22,13 @@ const devPlugins = [
 gulp.task('sass', () =>
     gulp.src(`${config.path.dev.styles}/*.{scss,sass}`)
         .pipe(plumber())
-        .pipe(gulpif(!isProdMode, sourcemaps.init()))
+        .pipe(gulpIf(!global.isProdMode, sourcemaps.init()))
         .pipe(sass().on('error', sass.logError))
-        .pipe(postcss(isProdMode ? prodPlugins : devPlugins))
-        .pipe(gulpif(!isProdMode, sourcemaps.write()))
+        .pipe(postcss(global.isProdMode ? prodPlugins : devPlugins))
+        .pipe(gulpIf(!global.isProdMode, sourcemaps.write()))
         .pipe(gulp.dest(config.path.dist.styles))
 );
 
+gulp.task('sass:watch', ['sass'], () => 
+    browserSync.reload('*.css')
+);
