@@ -4,6 +4,8 @@ const sourcemaps    = require('gulp-sourcemaps');
 const babel         = require('gulp-babel');
 const order         = require('gulp-order');
 const concat        = require('gulp-concat');
+const gulpif        = require('gulp-if');
+const uglify        = require('gulp-uglify');
 const config        = require('../gulpconfig');
 
 
@@ -19,10 +21,11 @@ const fileOrder = [
 gulp.task('babel', () =>
     gulp.src(`${config.path.dev.js}/*.js`)
         .pipe(plumber())
-        .pipe(sourcemaps.init())
+        .pipe(gulpif(!isProdMode, sourcemaps.init()))
         .pipe(babel(plugins))
-        .pipe(order(fileOrder, {base: './'}))
+        .pipe(order(fileOrder, { base: './' }))
         .pipe(concat('all.js'))
-        .pipe(sourcemaps.write())
+        .pipe(gulpif(isProdMode, uglify()))
+        .pipe(gulpif(!isProdMode, sourcemaps.write()))
         .pipe(gulp.dest(config.path.dist.js))
 )
