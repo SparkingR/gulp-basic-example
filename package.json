@@ -19,7 +19,9 @@
     "gulp-babel": "^7.0.0",
     "gulp-clean": "^0.3.2",
     "gulp-concat": "^2.6.1",
+    "gulp-favicons": "^2.2.7",
     "gulp-if": "^2.0.2",
+    "gulp-imagemin": "^3.3.0",
     "gulp-order": "^1.1.1",
     "gulp-plumber": "^1.1.0",
     "gulp-postcss": "^7.0.0",
@@ -28,6 +30,7 @@
     "gulp-sequence": "^0.4.6",
     "gulp-sourcemaps": "^2.6.0",
     "gulp-uglify": "^3.0.0",
+    "gulp-util": "^3.0.8",
     "minimist": "^1.2.0",
     "require-dir": "^0.3.2"
   }

@@ -1,8 +1,8 @@
-const gulp      = require('gulp');
-const plumber   = require('gulp-plumber')
-const pug       = require('gulp-pug');
-const config    = require('../gulpconfig');
-const browserSync = require('./browserSync');
+const gulp          = require('gulp');
+const plumber       = require('gulp-plumber')
+const pug           = require('gulp-pug');
+const config        = require('../gulpconfig');
+const browserSync   = require('./browserSync');
 
 // failed when build due to real-time change global.isPordMode in task "set-prodmode"
 // const pugOption = {

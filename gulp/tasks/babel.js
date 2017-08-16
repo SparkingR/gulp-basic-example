@@ -10,7 +10,7 @@ const config        = require('../gulpconfig');
 const browserSync   = require('./browserSync');
 
 
-const plugins = {
+const babelPlugins = {
     presets: ['es2015']
 };
 
@@ -29,7 +29,7 @@ gulp.task('babel', () =>
     gulp.src(`${config.path.dev.js}/*.js`)
         .pipe(plumber())
         .pipe(gulpIf(!global.isProdMode, sourcemaps.init()))
-        .pipe(babel(plugins))
+        .pipe(babel(babelPlugins))
         .pipe(order(fileOrder, { base: './' }))
         .pipe(concat('all.js'))
         .pipe(gulpIf(global.isProdMode, uglify(uglifyOption)))

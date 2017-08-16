@@ -1,12 +1,13 @@
-const gulp = require('gulp');
-const browserSync = require('browser-sync').create();
-const config = require('../gulpconfig');
+const gulp          = require('gulp');
+const browserSync   = require('browser-sync').create();
+const config        = require('../gulpconfig');
 
 
-// https://browsersync.io/docs/options#option-minify
+// https://browsersync.io/docs/options
 const browserSyncOption = {
+    port: 3000,
+    reloadThrottle: 2000,
     server: {
-        port: 3000,
         baseDir: config.path.dist.app,
         routes: {
             "/": config.path.dist.views

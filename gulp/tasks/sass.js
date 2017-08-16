@@ -7,15 +7,15 @@ const autoprefixer  = require('autoprefixer');
 const cssnano       = require('cssnano');
 const gulpIf        = require('gulp-if');
 const config        = require('../gulpconfig');
-const browserSync = require('./browserSync');
+const browserSync   = require('./browserSync');
 
 
-const prodPlugins = [
+const prodPostcssPlugins = [
     autoprefixer({ browsers: ['last 2 versions'] }),
     cssnano()
 ];
 
-const devPlugins = [
+const devPostcssPlugins = [
     autoprefixer({ browsers: ['last 2 versions'] })
 ];
 
@@ -24,7 +24,7 @@ gulp.task('sass', () =>
         .pipe(plumber())
         .pipe(gulpIf(!global.isProdMode, sourcemaps.init()))
         .pipe(sass().on('error', sass.logError))
-        .pipe(postcss(global.isProdMode ? prodPlugins : devPlugins))
+        .pipe(postcss(global.isProdMode ? prodPostcssPlugins : devPostcssPlugins))
         .pipe(gulpIf(!global.isProdMode, sourcemaps.write()))
         .pipe(gulp.dest(config.path.dist.styles))
 );
